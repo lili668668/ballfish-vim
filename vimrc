@@ -24,7 +24,7 @@
 "自動排版
 "gg=G
 "
-"搜尋
+"取代
 ":[range]s/pattern/string/[c,e,g,i]
 
 "range  指的是範圍，1,7 指從第一行至第七行，1,$ 指從第一行
@@ -38,6 +38,9 @@
 "e  不顯示 error。
 "g  globe，不詢問，整行替換。
 "i  ignore 不分大小寫。
+"刪除
+"刪除節對裡的東西di加對符號
+"刪除到某個字前的東西df加那個字
 "-------------------------------------------------------------------------
 "顯示行號
 set number
@@ -60,6 +63,8 @@ set background=dark
 "文件語法自動高亮
 filetype on
 filetype plugin on
+"文件模式
+set fileformats=unix,dos
 "命令模式自動補全
 set wildmenu
 "高亮顯示行列
@@ -70,12 +75,15 @@ set linebreak
 "語法高亮
 syntax enable
 syntax on
+colorscheme monokai
+set t_Co=256
 "基於縮進代碼折疊
 set foldmethod=syntax
 "啟動vim預設不折疊
 set nofoldenable
 "不備份
 set nobackup
+set noundofile
 "顯示正在輸入命令
 set showcmd
 "關閉該死的Scratch預覽
@@ -133,28 +141,18 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-" git協作
-Plugin 'tpope/vim-fugitive'
-" 自動完成
-Plugin 'Shougo/neocomplete.vim'
 " 支援 grep 搜尋
 Plugin 'yegappan/grep'
 " 快速註解
 Plugin 'scrooloose/nerdcommenter'
-" 板型集合
-Plugin 'honza/vim-snippets'
 " 樹狀目錄
 Plugin 'scrooloose/nerdtree'
-" 語法檢驗
-Plugin 'scrooloose/syntastic'
 " 結對符號快速圈起
 Plugin 'gcmt/wildfire.vim'
 " 光標快速移動
 Plugin 'easymotion/vim-easymotion'
 " 可視化折疊
 Plugin 'nathanaelkane/vim-indent-guides'
-" 快速套板
-Plugin 'SirVer/ultisnips'
 " xml快速完成
 Plugin 'mattn/emmet-vim'
 " 快速查詢文件
@@ -165,9 +163,15 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'bling/vim-airline'
 " airline 字型
 Plugin 'powerline/fonts'
+" mutiple cursors
+Plugin 'terryma/vim-multiple-cursors'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " vim的腳本
 Plugin 'L9'
+" 自動完成
+Plugin 'vim-scripts/AutoComplPop'
+Plugin 'crusoexia/vim-monokai'
+Plugin 'kitao/unity_dict'
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
@@ -190,21 +194,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "------------------------------------------------------------------------
-"------------------------------------------------------------------------
-"Neocompelete setting
-"------------------------------------------------------------------------
-let g:neocomplete#enable_at_startup = 1
-"------------------------------------------------------------------------
-"------------------------------------------------------------------------
-"自動補全設定
-"------------------------------------------------------------------------
-set completeopt+=longest
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 "------------------------------------------------------------------------
 "可視化折疊
 "------------------------------------------------------------------------
@@ -300,3 +289,4 @@ let g:user_emmet_leader_key='<C-z>'
 " set status line
 set laststatus=2
 "------------------------------------------------------------------------
+
