@@ -1,0 +1,18 @@
+[user]
+	email = lili668668@gmail.com
+	name = Tzu-Yin Hong
+[color]
+	ui = true
+	autocrlf = true
+[core]
+	editor = vim
+	autocrlf = true
+	trustctime = false
+[alias]
+	co = "commit -m"
+	ch = checkout
+	lg = "log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
+[push]
+	default = matching
+[http]
+	postBuffer = 157286400
