@@ -50,10 +50,10 @@ set autoindent
 filetype indent on
 "tab鍵轉為空格
 set expandtab
-"縮進長度與tab長度皆為4
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+"縮進長度與tab長度皆為2
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 "高亮搜尋
 set hlsearch
 "搜尋時不分大小寫
@@ -153,8 +153,6 @@ Plugin 'gcmt/wildfire.vim'
 Plugin 'easymotion/vim-easymotion'
 " 可視化折疊
 Plugin 'nathanaelkane/vim-indent-guides'
-" xml快速完成
-Plugin 'mattn/emmet-vim'
 " 快速查詢文件
 Plugin 'kien/ctrlp.vim'
 " 結對符號自動產生器
@@ -170,8 +168,12 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'L9'
 " 自動完成
 Plugin 'vim-scripts/AutoComplPop'
+
 Plugin 'crusoexia/vim-monokai'
-Plugin 'kitao/unity_dict'
+
+Plugin 'moll/vim-node'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'vim-syntastic/syntastic'
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
@@ -296,9 +298,17 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 "------------------------------------------------------------------------
-
-
-
-
-
-
+" vim syntastic set
+" How to use => :SC => will do syntastic check
+"------------------------------------------------------------------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint'
+let g:syntastic_mode_map = {'mode': 'passive'} 
+:command SC SyntasticCheck

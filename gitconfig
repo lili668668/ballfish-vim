@@ -3,10 +3,8 @@
 	name = Tzu-Yin Hong
 [color]
 	ui = true
-	autocrlf = true
 [core]
 	editor = vim
-	autocrlf = true
 	trustctime = false
 [alias]
 	co = "commit -m"
