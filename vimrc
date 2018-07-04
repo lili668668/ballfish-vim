@@ -91,6 +91,11 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 "快速鍵
 :command TN tab new
+"啟動copy to 系統
+"需要安裝 vim-gtk
+"參照 http://vim.wikia.com/wiki/Accessing_the_system_clipboard
+set clipboard=unnamedplus
+set clipboard+=unnamed
 "-------------------------------------------------------------------------
 "-------------------------------------------------------------------------
 " Encoding setting
@@ -221,6 +226,7 @@ let g:indent_guides_enable_on_vim_startup = 0
 let g:indent_guides_start_level = 2
 " 色块宽度
 let g:indent_guides_guide_size = 1
+set ts=2 sw=2 et
 " 快捷键 i 开/关缩进可视化
 :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 "------------------------------------------------------------------------
