@@ -89,6 +89,8 @@ set showcmd
 "關閉該死的Scratch預覽
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+"快速鍵
+:command TN tab new
 "-------------------------------------------------------------------------
 "-------------------------------------------------------------------------
 " Encoding setting
@@ -147,6 +149,10 @@ Plugin 'yegappan/grep'
 Plugin 'scrooloose/nerdcommenter'
 " 樹狀目錄
 Plugin 'scrooloose/nerdtree'
+" 樹狀目錄 git plugin
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+" git 視覺化
+Plugin 'airblade/vim-gitgutter'
 " 結對符號快速圈起
 Plugin 'gcmt/wildfire.vim'
 " 光標快速移動
@@ -154,7 +160,7 @@ Plugin 'easymotion/vim-easymotion'
 " 可視化折疊
 Plugin 'nathanaelkane/vim-indent-guides'
 " 快速查詢文件
-Plugin 'kien/ctrlp.vim'
+Plugin 'Yggdroot/LeaderF'
 " 結對符號自動產生器
 Plugin 'jiangmiao/auto-pairs'
 " airline
@@ -168,12 +174,19 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'L9'
 " 自動完成
 Plugin 'vim-scripts/AutoComplPop'
+" Rust Configure
+Plugin 'rust-lang/rust.vim'
+" 行號小幫手
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+" 彩色括弧
+Plugin 'luochen1990/rainbow'
 
 Plugin 'crusoexia/vim-monokai'
 
 Plugin 'moll/vim-node'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'vim-syntastic/syntastic'
+
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
@@ -234,20 +247,46 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories=["mysnippets"]
 "------------------------------------------------------------------------
-"nerdtree setting
+" nerdtree setting
+" C 往下一層
+" u 往上一層
+" t tab 開啟
+" i 水平分割開啟
+" s 垂直分割開啟
+" :BM add bookmark
+" D delete bookmark
 "------------------------------------------------------------------------
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
 nmap <Leader>n :NERDTreeToggle<CR>
 " 设置NERDTree子窗口宽度
-let NERDTreeWinSize=20
+let NERDTreeWinSize=40
 " 设置NERDTree子窗口位置
 let NERDTreeWinPos="left"
 " 显示隐藏文件
 let NERDTreeShowHidden=1
-" NERDTree 子窗口中不显示冗余帮助信息
-let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
+" :BM add bookmark
+:command BM Bookmark
+" 開起時 show bookmark
+let g:NERDTreeShowBookmarks=1
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+call NERDTreeHighlightFile('py',     'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('md',     'blue',    'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml',    'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('config', 'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('conf',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('json',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('html',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('styl',   'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('css',    'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('rb',     'Red',     'none', 'red',     '#151515')
+call NERDTreeHighlightFile('js',     'Red',     'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')
 "------------------------------------------------------------------------
 "wildfire setting
 "------------------------------------------------------------------------
@@ -312,3 +351,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint'
 let g:syntastic_mode_map = {'mode': 'passive'} 
 :command SC SyntasticCheck
+"------------------------------------------------------------------------
+" Rainbow Parentheses Improved
+" 彩色括弧
+"------------------------------------------------------------------------
+let g:rainbow_active = 1
