@@ -196,6 +196,8 @@ Plugin 'moll/vim-node'
 Plugin 'jelera/vim-javascript-syntax'
 " lint
 Plugin 'vim-syntastic/syntastic'
+" marker
+Plugin 'kshenoy/vim-signature'
 
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
@@ -365,3 +367,10 @@ let g:indentLine_leadingSpaceEnabled = 1
 " use :FW
 "------------------------------------------------------------------------
 :command FW FixWhitespace
+"------------------------------------------------------------------------
+" marker
+" 加入標記 mx (x 是a-zA-Z)
+" 刪除標記 dmx (x 是a-zA-Z)
+" 標記瀏覽 m/
+"------------------------------------------------------------------------
+
