@@ -30,7 +30,7 @@
 "range  指的是範圍，1,7 指從第一行至第七行，1,$ 指從第一行
        "至最後一行，也就是整篇文章，也可以 % 代表。
 
-    "還記得嗎？ % 是目前編輯的文章，# 是前一次編輯的文章。 
+    "還記得嗎？ % 是目前編輯的文章，# 是前一次編輯的文章。
 
 "pattern  就是要被替換掉的字串，可以用 regexp 來表示。
 "string   將 pattern 由 string 所取代。
@@ -95,23 +95,23 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 "需要安裝 vim-gtk
 "參照 http://vim.wikia.com/wiki/Accessing_the_system_clipboard
 set clipboard=unnamedplus
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 "-------------------------------------------------------------------------
 "-------------------------------------------------------------------------
 " Encoding setting
 "-------------------------------------------------------------------------
-set encoding=utf-8                                  
+set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,big5,gb2312,latin1
 
 fun! ViewUTF8()
-    set encoding=utf-8                                  
+    set encoding=utf-8
     set termencoding=big5
 endfun
 
 fun! UTF8()
-    set encoding=utf-8                                  
+    set encoding=utf-8
     set termencoding=big5
     set fileencoding=utf-8
     set fileencodings=ucs-bom,big5,utf-8,latin1
@@ -148,8 +148,6 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-" 支援 grep 搜尋
-Plugin 'yegappan/grep'
 " 快速註解
 Plugin 'scrooloose/nerdcommenter'
 " 樹狀目錄
@@ -158,16 +156,18 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " git 視覺化
 Plugin 'airblade/vim-gitgutter'
+" git 小幫手
+Plugin 'tpope/vim-fugitive'
 " 結對符號快速圈起
 Plugin 'gcmt/wildfire.vim'
 " 光標快速移動
 Plugin 'easymotion/vim-easymotion'
 " 可視化折疊
-Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Yggdroot/indentLine'
 " 快速查詢文件
 Plugin 'Yggdroot/LeaderF'
 " 結對符號自動產生器
-Plugin 'jiangmiao/auto-pairs'
+Plugin 'Raimondi/delimitMate'
 " airline
 Plugin 'bling/vim-airline'
 " airline 字型
@@ -178,18 +178,23 @@ Plugin 'terryma/vim-multiple-cursors'
 " vim的腳本
 Plugin 'L9'
 " 自動完成
-Plugin 'vim-scripts/AutoComplPop'
+"Plugin 'vim-scripts/AutoComplPop'
+Plugin 'Valloric/YouCompleteMe'
 " Rust Configure
 Plugin 'rust-lang/rust.vim'
 " 行號小幫手
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 " 彩色括弧
 Plugin 'luochen1990/rainbow'
-
+" trail whitespace
+Plugin 'bronson/vim-trailing-whitespace'
+" 色彩庫
 Plugin 'crusoexia/vim-monokai'
-
+" 文件快速尋找
 Plugin 'moll/vim-node'
+" javascript 高量顯示
 Plugin 'jelera/vim-javascript-syntax'
+" lint
 Plugin 'vim-syntastic/syntastic'
 
 " Git plugin not hosted on GitHub
@@ -204,31 +209,16 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 " filetype plugin on
-" 
+"
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-" 
+"
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "------------------------------------------------------------------------
-"------------------------------------------------------------------------
-"可視化折疊
-"------------------------------------------------------------------------
-"使用說明
-"\i可開關可視化
-"------------------------------------------------------------------------
-" 随 vim 自启动
-let g:indent_guides_enable_on_vim_startup = 0
-" 从第二层开始可视化显示缩进
-let g:indent_guides_start_level = 2
-" 色块宽度
-let g:indent_guides_guide_size = 1
-set ts=2 sw=2 et
-" 快捷键 i 开/关缩进可视化
-:nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 "------------------------------------------------------------------------
 "nerdcommenter teach
 "------------------------------------------------------------------------
@@ -264,6 +254,8 @@ let g:UltiSnipsSnippetDirectories=["mysnippets"]
 "------------------------------------------------------------------------
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
 nmap <Leader>n :NERDTreeToggle<CR>
+" 顯示行號
+let NERDTreeShowLineNumbers=1
 " 设置NERDTree子窗口宽度
 let NERDTreeWinSize=40
 " 设置NERDTree子窗口位置
@@ -355,10 +347,21 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint'
-let g:syntastic_mode_map = {'mode': 'passive'} 
+let g:syntastic_mode_map = {'mode': 'passive'}
 :command SC SyntasticCheck
 "------------------------------------------------------------------------
 " Rainbow Parentheses Improved
 " 彩色括弧
 "------------------------------------------------------------------------
 let g:rainbow_active = 1
+"------------------------------------------------------------------------
+" indentLine
+" 可視化折疊
+"------------------------------------------------------------------------
+let g:indentLine_color_term = 239
+let g:indentLine_leadingSpaceEnabled = 1
+"------------------------------------------------------------------------
+" trail whitespace
+" use :FW
+"------------------------------------------------------------------------
+:command FW FixWhitespace
