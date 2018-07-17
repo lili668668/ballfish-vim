@@ -167,7 +167,7 @@ Plugin 'Yggdroot/indentLine'
 " 快速查詢文件
 Plugin 'Yggdroot/LeaderF'
 " 結對符號自動產生器
-Plugin 'Raimondi/delimitMate'
+Plugin 'jiangmiao/auto-pairs'
 " airline
 Plugin 'bling/vim-airline'
 " airline 字型
@@ -351,6 +351,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint'
 let g:syntastic_mode_map = {'mode': 'passive'}
 :command SC SyntasticCheck
+:command SR SyntasticReset
 "------------------------------------------------------------------------
 " Rainbow Parentheses Improved
 " 彩色括弧
@@ -373,4 +374,7 @@ let g:indentLine_leadingSpaceEnabled = 1
 " 刪除標記 dmx (x 是a-zA-Z)
 " 標記瀏覽 m/
 "------------------------------------------------------------------------
-
+"------------------------------------------------------------------------
+" YCM
+"------------------------------------------------------------------------
+set completeopt-=preview
