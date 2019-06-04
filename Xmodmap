@@ -1,0 +1,11 @@
+remove mod4 = Super_L
+remove control = Control_L
+remove mod1 = Alt_L
+remove mod5 = ISO_Level3_Shift
+keysym Control_L = Super_L
+keysym Super_L = Alt_L
+keysym Alt_L = Control_L
+keysym ISO_Level3_Shift = Alt_R
+add mod4 = Super_L
+add control = Control_L
+add mod1 = Alt_L ISO_Level3_Shift
