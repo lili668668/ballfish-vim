@@ -7,9 +7,11 @@
 	editor = vim
 	trustctime = false
 [alias]
-	co = "commit -m"
+	co = commit
 	ch = checkout
 	lg = "log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
+  week = "log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --since=1.week --author=\"Tzu-Yin Hong\""
+  me = "log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author=\"Tzu-Yin Hong\""
 [push]
 	default = matching
 [http]
