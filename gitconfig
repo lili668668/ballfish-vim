@@ -10,8 +10,8 @@
 	co = commit
 	ch = checkout
 	lg = "log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
-  week = "log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --since=1.week --author=\"Tzu-Yin Hong\""
-  me = "log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author=\"Tzu-Yin Hong\""
+  week = "log --pretty=format:'%Cgreen(%cr)%Creset %s' --author='Tzu-Yin Hong' --since=1.week --until=1.day --grep='^fix' --grep='^feat'"
+  me = "log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author='Tzu-Yin Hong'"
 [push]
 	default = matching
 [http]
